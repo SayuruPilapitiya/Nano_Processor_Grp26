@@ -49,7 +49,7 @@ entity Nanoprocessor is
         
         Anode_Out     : out STD_LOGIC_VECTOR (3 downto 0);
         -- New 7-Segment Pins
-        Seg_Out       : out STD_LOGIC_VECTOR (7 downto 0)
+        Seg_Out       : out STD_LOGIC_VECTOR (6 downto 0)
     );
 end Nanoprocessor;
 
@@ -165,7 +165,7 @@ architecture Structural of Nanoprocessor is
     COMPONENT LUT_16_7
                 PORT(
                     address : IN std_logic_vector(3 downto 0);
-                    data    : OUT std_logic_vector(7 downto 0)
+                    data    : OUT std_logic_vector(6 downto 0)
                 );
             END COMPONENT;
             
@@ -360,7 +360,7 @@ begin
     Status_Data_in (7 downto 1) <= "0110100";
     
     -- Turn ON only the right-most 7-segment digit (Active Low: 0 means ON)
-    Anode_Out <= "1110"; 
+    Anode_Out <= "0000"; 
     Dec_Jump_Flag <= Jump and Flag_Out;
 
     -- Connect the 7-Segment Decoder
